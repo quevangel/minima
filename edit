@@ -1,0 +1,25 @@
+#!/bin/bash
+
+tofind=$1
+regex="\./source/.*$tofind\(\.d\)?"
+files=$(find -regex "$regex" -print)
+arr=( $files )
+if [[ ${#arr[*]} -eq 0 ]]; then 
+  exit
+fi
+
+if [[ ${#arr[*]} -eq 1 ]]; then
+  selected=$files
+else
+  selected=$(dmenu -b -l 4 -fn "FiraCode:size=14" <<< $files)
+fi
+
+echo $selected
+if [[ -d $selected ]]; then 
+  echo "it's a directory"
+  echo $selected
+  vim -p $(find -regex "$selected/.*\.d" -print)
+  exit
+else
+  vim $selected
+fi

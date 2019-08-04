@@ -1,0 +1,1 @@
+module minima.generic.intercomm;

@@ -1,0 +1,13 @@
+{
+	"authors": [
+		"quevangel"
+	],
+	"copyright": "none.",
+	"dependencies": {
+		"derelict-sdl2": "~>2.1.4"
+	},
+	"description": "Minima game.",
+	"license": "none.",
+	"name": "minima",
+        "dflags": ["-op"]
+}
