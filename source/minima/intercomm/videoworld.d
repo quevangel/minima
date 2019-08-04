@@ -52,7 +52,8 @@ interface WorldToVideo : worldcomm.Send, videocomm.Receive
         public
         {
             this(Biarray!string blockNames, int lowerRow, int higherRow,
-                    int lowerColumn, int higherColumn, int requestId, Box[] boxes, string debugMessage = "")
+                    int lowerColumn, int higherColumn,
+                    int requestId, Box[] boxes, string debugMessage = "")
             in
             {
                 assert(higherRow - lowerRow + 1 == blockNames.rows);

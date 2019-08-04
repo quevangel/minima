@@ -55,8 +55,9 @@ void respondToViewRequest(immutable VideoToWorld.RequestView viewRequest)
         foreach (column; columnRange)
             blockNames[row, column] = data.world.terrain.solidAt(column, row) ? "something" : "none";
     Box[] boxes = [data.world.player.box];
-    string debugMessage = text("Player on ground? ", data.world.player.onGround? " yes" : " no");
+    string debugMessage = text("Player on ground? ", data.world.player.onGround ? " yes" : " no");
     import std.stdio;
+
     writeln(debugMessage);
     debug boxes ~= data.world.player.box.collidingBox;
     auto response = new immutable WorldToVideo.ResponseView(blockNames,

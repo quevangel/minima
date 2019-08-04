@@ -21,12 +21,12 @@ package
         force[] += gravity[];
         if (data.world.player.onGround)
         {
-            force[1] = force[1] <= 0.0? 0.0 : force[1]; // Normal force acting.
+            force[1] = force[1] <= 0.0 ? 0.0 : force[1]; // Normal force acting.
             auto velocity = data.world.player.velocity[0];
             auto direction = velocity.sgn;
             if (direction)
             {
-                auto friction = - direction;
+                auto friction = -direction;
                 if (velocity + timeIncrement * friction <= 0)
                 {
                     data.world.player.velocity[0] = 0;
@@ -50,11 +50,12 @@ package
         auto lowerY = box.corner!([0, -1])[1];
         if (lowerY.pmod(1.0) == 0)
         {
-            int i = cast(int) (lowerY - 1.0);
+            int i = cast(int)(lowerY - 1.0);
             auto xBoundary = box.boundary!"x";
             auto xLowerIndex = cast(int) xBoundary[0].floor;
             auto xHigherIndex = cast(int) xBoundary[1].ceil;
-            bool result = iota(xLowerIndex, xHigherIndex).any!(j => data.world.terrain.solidAt(j, i));
+            bool result = iota(xLowerIndex, xHigherIndex).any!(
+                    j => data.world.terrain.solidAt(j, i));
             return result;
         }
         return false;

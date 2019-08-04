@@ -28,9 +28,12 @@ struct Box
             int axis = 0;
         else static if (which == "y")
             int axis = 1;
-        else static assert(false);
+        else
+            static assert(false);
 
-        double[2] result = [center[axis] - size[axis] / 2.0, center[axis] + size[axis] / 2.0];
+        double[2] result = [
+            center[axis] - size[axis] / 2.0, center[axis] + size[axis] / 2.0
+        ];
         return result;
     }
 
